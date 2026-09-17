@@ -187,7 +187,7 @@
 }
 
 .like-icon .core {
-  fill: transparent;
+  fill: none;
 }
 
 .like-icon .main-body {
@@ -213,7 +213,14 @@
   cursor: pointer;
 }
 
+.card__like-button:hover {
+  background-color: #000;
+}
 
+.card__like-button:focus-visible {
+  outline: none;
+  box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 1);
+}
 
 .button__text {
   position: relative;

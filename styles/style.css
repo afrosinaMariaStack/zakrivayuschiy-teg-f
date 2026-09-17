@@ -11,13 +11,27 @@
 */
 
 .page {
+  background-color: #ffffff;
+  z-index: 0;
   min-inline-size: 320px;
-  min-block-size: 100dvb;
+  min-block-size: 100vh;
   font-family: var(--main-font);
-  font-variation-settings: "wght" var(--main-font-weight);
-  background-image: var(--background-image);
-  background-size: cover;
+    background-size: cover;
   background-attachment: fixed;
+   font-variation-settings: "wght" var(--main-font-weight);
+  /* остальные ваши стили */
+}
+
+.page::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 960px;
+  background-image: var(--background-image);
+  z-index: -1;
+  pointer-events: none;
 }
 
 .header {
@@ -31,6 +45,27 @@
   margin-top: 100px;
   margin-block-end: 98px;
   min-block-size: 368px;
+  gap: 20px;
+  padding-block: clamp(122px, calc(0.75vw + 119.2px), 130px);
+  padding-inline: clamp(16px, calc(10vw - 21.5px), 122.5px);
+}
+
+.header__logo {
+  font-family: var(--accent-font);
+  font-size: clamp(49px, calc(1.5vw + 43.4px), 65px);
+  line-height: 1;
+}
+
+.header__title {
+  font-family: var(--accent-font);
+  font-size: clamp(14px, calc(0.85vw + 10.8px), 23px);
+  line-height: 1;
+}
+
+.card {
+  border: 2px solid #000;
+  background-color: #fff;
+  margin-top: 50px;
 }
 
 .content-section {
@@ -38,81 +73,191 @@
   margin-inline: auto;
 }
 
-.header__logo {
-  font-family: var(--accent-font);
-  font-size: clamp(3rem, 2.5rem + 2vw, 4.0625rem);
-  line-height: 1;
-}
-
-.header__title {
-  font-family: var(--accent-font);
-  font-size: clamp(0.875rem, 0.75rem + 0.8vw, 1.4375rem);
-  line-height: 1;
-}
-
-.card {
-    border: 2px solid #000;
-  background-color: #fff;
-  margin-top: 50px;
-}
-
-.content-section {
-    width: var(--content-width);
-  margin-inline: auto;
-}
-
 .card__title {
-    font-size: 18px;
+  font-size: 18px;
   line-height: 1.2;
-  font-variation-settings: 'wght' var(--title-font-weight);
+  font-variation-settings: "wght" var(--title-font-weight);
 }
 
 .card__image-wrapper {
+  position: relative;
   border-block: 2px solid #000;
 }
 
 .card__image {
-    display: block;
+  display: block;
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
 }
 
+.card__label {
+  position: absolute;
+  inset-block-start: 25px;
+  inset-inline-end: 25px;
+  font-family: var(--accent-font);
+  font-size: 14px;
+  opacity: var(--label-opacity);
+  background-color: transparent;
+  mix-blend-mode: hard-light;
+}
 
+@supports (
+  (-webkit-text-stroke: 1px var(--label-stroke-color)) or
+    (text-stroke: 1px var(--label-stroke-color))
+) {
+  .card__label {
+    text-shadow: none;
+    -webkit-text-stroke: 1px var(--label-stroke-color);
+    text-stroke: 1px var(--label-stroke-color);
+  }
+}
 
 .card__content {
   padding: 25px;
+  display: grid;
+  gap: 20px;
 }
 
 .card__text {
   font-size: 18px;
-  font-variation-settings: 'wght' var(--main-font-weight);
+  font-variation-settings: "wght" var(--main-font-weight);
 }
 
-.button{
+.button {
   border: 2px solid #000;
+  background-color: #fff;
+  font-family: var(--accent-font);
+  font-size: 14px;
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: #000;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.5s ease-in-out;
 }
 
 .card__buttons {
-    display: flex;
+  display: flex;
   align-items: center;
   justify-content: flex-end;
   gap: 10px;
 }
 
 .card__icon-button {
-    align-items: center;
-  width: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 39px;
   height: 36px;
   padding: 0;
-  border: 2px solid #000;
+  border: none;
   background-color: transparent;
   cursor: pointer;
+  overflow: visible;
+}
+
+.card__icon-button:focus {
+  outline: none;
+}
+
+.button:hover::before {
+  background-color: #000;
+  transform: scaleX(1);
+}
+
+.card__icon-button:focus-visible {
+  border-color: var(--accent-color);
 }
 
 .like-icon {
-  display: block;
   width: 39px;
   height: 36px;
-  
+  display: block;
+  margin: 0;
+  fill: none;
 }
+
+.like-icon .contour {
+  fill: #000;
+}
+
+.like-icon .core {
+  fill: transparent;
+}
+
+.like-icon .main-body {
+  fill: transparent;
+  transition: opacity 0.3s ease;
+}
+
+.like-icon .sparks {
+  fill: #FF0000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card__like-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  width: 130px;
+  height: 38px;
+  border: 2px solid #000;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+
+
+.button__text {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  mix-blend-mode: difference;
+  font-size: 14px;
+  line-height: 90%;
+}
+
+.save-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-inline: auto;
+  margin-top: 50px;
+  margin-bottom: 100px;
+  width: 335px;
+  height: 55px;
+}
+
+.save-button__icon {
+  width: 21px;
+  height: 21px;
+  position: relative;
+  color: #fff;
+  position: relative;
+}
+
+.dialog {
+  display: none;
+  width: 353px;
+  padding: 30px;
+  border: 2px solid #000;
+  background-color: #fff;
+}
+
+.dialog[open] {
+  display: block;
+}
+
+.dialog::backdrop {
+  background-color: rgb(0 0 0 / 0.75);
+}
+
+

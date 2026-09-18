@@ -14,4 +14,6 @@
   --animation-fill-color: #ff0000;
   --label-stroke-color: #fff;
   --label-opacity: 0.5;
+  --contour-color: #000;
+  --animation-fill-color: rgb(255 0 0);
 }

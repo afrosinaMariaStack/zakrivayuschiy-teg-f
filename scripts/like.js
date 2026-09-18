@@ -39,3 +39,8 @@ function setButtonText(heart, button) {
     );
   }
 }
+
+const dialog = document.querySelector('#save-dialog');
+const openDialogButton = document.querySelector('[data-open-dialog]');
+
+openDialogButton?.addEventListener('click', () => dialog.showModal());

@@ -141,6 +141,18 @@
   transition: transform 0.5s ease-in-out;
 }
 
+.button:hover::before {
+  transform: translateX(0);
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:focus-visible {
+  box-shadow: 2px 2px 0 var(--accent-color);
+}
+
 .card__buttons {
   display: flex;
   align-items: center;
@@ -169,28 +181,107 @@
   border-color: var(--accent-color);
 }
 
+@keyframes left-right {
+  from {
+    translate: calc(-100% - 8px) -50%;
+  }
+
+  to {
+    translate: calc(-100% - 4px) -50%;
+  }
+}
+
+@keyframes change-opacity {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes change-scale {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.25);
+  }
+}
+
 .like-icon {
-  width: 39px;
-  height: 36px;
-  display: block;
-  margin: 0;
+  transform-origin: center;
+  cursor: pointer;
+}
+
+.like-icon .sparks {
+  opacity: 0;
 }
 
 .like-icon .contour {
-  fill: #000;
+  fill: var(--contour-color);
+  transition: fill 0.1s linear;
 }
 
 .like-icon .core {
   fill: transparent;
+  transition: fill 0.3s 0.03s linear;
 }
 
 .like-icon .main-body {
   fill: transparent;
-  transition: opacity 0.3s ease;
+  transition: fill 0.3s linear;
 }
 
-.like-icon .sparks {
-  fill: transparent;
+.like-icon:hover .core {
+  fill: var(--contour-color);
+  transition: fill 0.3s linear;
+}
+
+.like-icon:hover .main-body {
+  fill: var(--contour-color);
+  transition: fill 0.3s 0.05s linear;
+}
+
+.like-icon:active .core {
+  fill: var(--animation-fill-color);
+  transition: fill 0.3s linear;
+}
+
+.like-icon:active .main-body {
+  fill: var(--animation-fill-color);
+  transition: fill 0.3s 0.05s linear;
+}
+
+.like-icon.is-liked .contour {
+  fill: var(--animation-fill-color);
+  transition: fill 0.3s 0.06s linear;
+}
+
+.like-icon.is-liked .core {
+  fill: var(--animation-fill-color);
+  transition: fill 0.3s linear;
+}
+
+.like-icon.is-liked .main-body {
+  fill: var(--animation-fill-color);
+  transition: fill 0.3s 0.05s linear;
+}
+
+.like-icon.is-liked {
+  animation: change-scale 0.3s 0.1s ease-in;
+}
+
+.like-icon.is-liked .sparks {
+  animation: change-opacity 0.3s 0.3s ease-in;
+}
+
+.card__icon-button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 1); 
+  border-width: 2px;
 }
 
 .card__like-button {
@@ -203,6 +294,7 @@
   border: 2px solid #000;
   background-color: #fff;
   cursor: pointer;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .card__like-button:hover {
@@ -212,6 +304,7 @@
 .card__like-button:focus-visible {
   outline: none;
   box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 1);
+  transform: translateY(-1px);
 }
 
 .button__text {
@@ -228,19 +321,24 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
+  padding: 20.5px 20px;
   margin-inline: auto;
   margin-top: 50px;
   margin-bottom: 100px;
   width: 335px;
   height: 55px;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.save-button:focus-visible {
+  box-shadow: 2px 2px 0 var(--accent-color);
+  transform: translateY(-1px);
 }
 
 .save-button__icon {
-  width: 21px;
-  height: 21px;
-  position: relative;
-  color: #fff;
-  position: relative;
+  inline-size: 21px;
+  block-size: 21px;
+  fill: #000;
 }
 
 .dialog {
@@ -248,15 +346,74 @@
   width: 353px;
   padding: 30px;
   border: 2px solid #000;
-  background-color: #fff;
 }
 
 .dialog[open] {
-  display: block;
+display: block;
 }
 
 .dialog::backdrop {
   background-color: rgb(0 0 0 / 0.75);
 }
 
+.dialog__content {
+  display: grid;
+  grid-template-columns: 39px 1fr;
+  align-items: center;
+  gap: 20px;
+}
+
+.dialog__icon {
+  inline-size: 39px;
+  block-size: 39px;
+  fill: currentColor;
+}
+
+.dialog__text {
+  font-size: 14px;
+  line-height: 150%;
+  text-transform: uppercase;
+  font-family: var(--accent-font);
+}
+
+.dialog__button {
+  inline-size: 100%;
+  block-size: 38px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.dialog-button:focus-visible {
+  box-shadow: 2px 2px 0 var(--accent-color);
+  transform: translateY(-1px);
+}
+
+.save-button, 
+.card__like-button, 
+.dialog__button {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.save-button::after,
+.card__like-button::after,
+.dialog__button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--accent-color, #000); 
+  transition: transform 0.5s ease-in-out;
+  transform: scaleX(0); 
+  transform-origin: left;     
+  z-index: 0;
+}
+
+.button:hover::after,
+.card__like-button:hover::after,
+.dialog__button:hover::after {
+  transform: scaleX(1);
+}
 

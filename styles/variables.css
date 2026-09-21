@@ -9,9 +9,13 @@
     repeating-linear-gradient(to bottom, #d3d3d3 0 2px, transparent 2px 4px),
     linear-gradient(to bottom, #e7e7e7 0.01%, #1a1a1a);
   --content-width: clamp(375px, calc(30.52vw + 260.55px), 700px);
+  --gap-base: 20px;
+  --padding-base: 25px;
+  --border-width: 2px;
+  --color-black: #000;
+  --color-white: #fff;
   --button-text-color: #fff;
   --accent-color: #000;
-  --animation-fill-color: #ff0000;
   --label-stroke-color: #fff;
   --label-opacity: 0.5;
   --contour-color: #000;

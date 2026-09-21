@@ -39,13 +39,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 2px solid #000;
+  border: var(--border-width) solid #000;
   background-color: #fff;
   text-align: center;
   margin-top: 100px;
   margin-block-end: 98px;
   min-block-size: 368px;
-  gap: 20px;
+  gap: var(--gap-base);
   padding-block: clamp(122px, calc(0.75vw + 119.2px), 130px);
   padding-inline: clamp(16px, calc(10vw - 21.5px), 122.5px);
 }
@@ -63,8 +63,8 @@
 }
 
 .card {
-  border: 2px solid #000;
-  background-color: #fff;
+  border: var(--border-width) solid var(--color-black);
+  background-color: var(--color-white);
   margin-top: 50px;
 }
 
@@ -94,6 +94,7 @@
 .image-1 {
   filter: opacity(0.8);
 }
+
 .image-2 {
   filter: blur(2px);
 }
@@ -105,9 +106,11 @@
 .image-4 {
   filter: saturate(150%);
 }
+
 .image-5 {
   filter: sepia(40%);
 }
+
 .image-6 {
   filter: hue-rotate(40deg);
 }
@@ -143,27 +146,27 @@
 }
 
 .card__content {
-  padding: 25px;
+  padding: var(--padding-base);
   display: grid;
-  gap: 20px;
+  gap: var(--gap-base);
 }
 
 .card__text {
   font-size: 18px;
-  font-variation-settings: "wght" var(--main-font-weight);
 }
 
 .button {
-  border: 2px solid #000;
-  background-color: #fff;
+  border: var(--border-width) solid var(--color-black);
+  background-color: var(--color-white);
   font-family: var(--accent-font);
   font-size: 14px;
   position: relative;
   overflow: hidden;
   z-index: 1;
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
 }
-
-
 
 .button:focus {
   outline: none;
@@ -311,20 +314,14 @@
   padding: 0px;
   width: 130px;
   height: 38px;
-  background-color: #fff;
   cursor: pointer;
-  transition:
-    box-shadow 0.3s ease,
-    transform 0.3s ease;
 }
 
 .card__like-button:hover {
-  background-color: #000;
+  background-color: var(--color-black);
 }
 
 .card__like-button:focus-visible {
-  outline: none;
-  box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 1);
   transform: translateY(-1px);
 }
 
@@ -333,7 +330,6 @@
   z-index: 1;
   color: #fff;
   mix-blend-mode: difference;
-  font-size: 14px;
   line-height: 90%;
 }
 
@@ -348,13 +344,9 @@
   margin-bottom: 100px;
   width: 335px;
   height: 55px;
-  transition:
-    box-shadow 0.3s ease,
-    transform 0.3s ease;
 }
 
 .save-button:focus-visible {
-  box-shadow: 2px 2px 0 var(--accent-color);
   transform: translateY(-1px);
 }
 
@@ -412,16 +404,12 @@
 .dialog__button {
   inline-size: 100%;
   block-size: 38px;
-  transition:
-    box-shadow 0.3s ease,
-    transform 0.3s ease;
 }
 
 .dialog-button:focus-visible {
   box-shadow: 2px 2px 0 var(--accent-color);
   transform: translateY(-1px);
 }
-
 
 .save-button,
 .card__like-button,

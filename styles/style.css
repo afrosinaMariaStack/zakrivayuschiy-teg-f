@@ -74,6 +74,8 @@
 }
 
 .card__title {
+  padding-inline: 10px;
+  padding-block: 4px;
   font-size: 18px;
   line-height: 1.2;
   font-variation-settings: "wght" var(--title-font-weight);
@@ -439,4 +441,35 @@
 .card__like-button:hover::after,
 .dialog__button:hover::after {
   transform: scaleX(1);
+}
+
+@media (width <= 375px) {
+  .header {
+    min-block-size: 327px;
+    padding: 16px;
+    margin-block-end: 100px;
+  }
+  .header__title {
+    font-size: 14px;
+  }
+
+  .save-button {
+    width: 100%;
+    max-width: 306px;
+    height: 84px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-inline: auto;
+    gap: 8px;
+    box-sizing: border-box;
+  }
+  .save-button {
+    padding-block: 17px;
+  }
+  .save-button__icon {
+    width: 28px;
+    height: 28px;
+  }
 }

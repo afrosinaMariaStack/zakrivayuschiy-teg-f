@@ -319,9 +319,7 @@
   cursor: pointer;
 }
 
-.card__like-button:hover {
-  background-color: var(--color-black);
-}
+
 
 .card__like-button:focus-visible {
   transform: translateY(-1px);

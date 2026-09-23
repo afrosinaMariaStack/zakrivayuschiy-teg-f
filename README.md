@@ -1,1 +1,1 @@
-https://afrosinamariastack.github.io/zakrivayuschiy-teg-f/
+https://github.com/afrosinaMariaStack/zakrivayuschiy-teg-f.git

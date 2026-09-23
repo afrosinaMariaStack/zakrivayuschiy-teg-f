@@ -319,8 +319,6 @@
   cursor: pointer;
 }
 
-
-
 .card__like-button:focus-visible {
   transform: translateY(-1px);
 }
@@ -388,7 +386,6 @@
   display: block;
   inline-size: 39px;
   block-size: 39px;
-  fill: currentColor;
 }
 
 .dialog__text {

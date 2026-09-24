@@ -12,8 +12,8 @@
   --gap-base: 20px;
   --padding-base: 25px;
   --border-width: 2px;
-  --color-black: #000;
-  --color-white: #fff;
+  --border-color: #000;
+  --background-color: #fff;
   --button-text-color: #fff;
   --accent-color: #000;
   --label-stroke-color: #fff;

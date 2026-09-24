@@ -47,8 +47,10 @@
 
 .header__title {
   font-family: var(--accent-font);
-  font-size: clamp(14px, calc(0.845vw + 10.8px), 23px);
+  font-size: var(--title-font-size, 0.8vw);
   line-height: 1;
+  text-transform: uppercase;
+  text-align: center;
 }
 
 .card {
@@ -139,11 +141,12 @@
 .card__content {
   padding: var(--padding-base);
   display: grid;
-  gap: var(--gap-base);
+  gap: 25px;
 }
 
 .card__text {
   font-size: 18px;
+  line-height: 21px;
 }
 
 .button {
@@ -336,9 +339,11 @@
     gap: 8px;
     box-sizing: border-box;
   }
+
   .save-button {
     padding-block: 17px;
   }
+  
   .save-button__icon {
     width: 28px;
     height: 28px;

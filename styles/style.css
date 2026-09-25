@@ -195,9 +195,8 @@
 }
 
 .card__icon-button:focus-visible {
-  border-color: var(--accent-color);
   outline: none;
-  box-shadow: 0 0 0 2px rgba(0, 0, 0, 1);
+  box-shadow: 0 0 0 2px var(--border-color);
 }
 
 .like-icon {
@@ -236,16 +235,12 @@
   min-height: 55px;
 }
 
-.save-button:focus-visible {
-  transform: translateY(-1px);
-}
-
 .save-button__icon {
   inline-size: 21px;
   block-size: 21px;
   z-index: 1;
   mix-blend-mode: difference;
-  color: #fff;
+  color: var(--button-text-color);
 }
 
 .dialog {
@@ -292,19 +287,7 @@
 .dialog__button {
   inline-size: 100%;
   block-size: 38px;
-}
-
-.dialog__button:focus-visible {
-  box-shadow: 2px 2px 0 var(--accent-color);
-  transform: translateY(-1px);
-}
-
-.save-button,
-.card__like-button,
-.dialog__button {
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
+  text-transform:uppercase
 }
 
 .button::after {
@@ -343,7 +326,7 @@
   .save-button {
     padding-block: 17px;
   }
-  
+
   .save-button__icon {
     width: 28px;
     height: 28px;
